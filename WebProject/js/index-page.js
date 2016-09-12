@@ -5,7 +5,7 @@
 	var serviceBySymbol = {};
 
 	var IndexPageProtype = function () {
-		this.dataPointsToSkipInRender = ["Name","Status", "Symbol"];
+		this.dataPointsToSkipInRender = {"Name":true,"Status":true, "Symbol": true, "Timestamp": true};
 	};
 
 	IndexPageProtype.prototype.init = function () {
@@ -46,13 +46,15 @@
 		for (var symbol in serviceBySymbol)
 		{
 			serviceBySymbol[symbol].getQuote()
-				.done($.proxy(this.handleQuoteSuccess, this, symbol))
-				.fail($.proxy(this.handleQuoteFail, this, symbol));
+				.done($.proxy(this.handleQuoteSuccess, this, symbol));
 		}
 	};
 
-	IndexPageProtype.prototype.handleQuoteFail = function (symbol) {
-		console.log(arguments);
+	// jsonp .fail isn't happening for some reason. Will look at this later.
+	IndexPageProtype.prototype.handleQuoteError = function (symbol) {
+		var $companyCard = $("section.company-card[data-symbol='" + symbol + "']:first");
+
+		$companyCard.find(".panel-body:first").html('<div class="bg-danger">Something went wrong getting data for ' + symbol + '</div>');
 	};
 
 	IndexPageProtype.prototype.handleQuoteSuccess = function (symbol, data) {

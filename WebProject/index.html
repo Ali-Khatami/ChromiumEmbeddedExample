@@ -41,11 +41,19 @@
 	<div class="container">
 		<div id="CompanyComparisonsRow" class="row">
 			<section class="company-card col-md-4">
-				<div class="well">
-					<h3 class="company-name">{{CompanyName}} <span>({{CompanySymbol}})</span></h3>
-					<table class="table">
-						<tbody></tbody>
-					</table>
+				<div class="panel panel-info">
+					<div class="panel-heading">
+						<h3 class="company-name">{{CompanyName}} <span>({{CompanySymbol}})</span></h3>
+					</div>
+					<div class="panel-body">
+						<div class="action-buttons">
+							<button type="button" class="btn btn-primary">Buy</button>
+							<button type="button" class="btn btn-danger">Sell</button>
+						</div>
+						<table class="table">
+							<tbody></tbody>
+						</table>
+					</div>
 				</div>
 			</section>
 		</div>

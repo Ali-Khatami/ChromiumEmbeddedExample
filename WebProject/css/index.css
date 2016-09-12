@@ -3,6 +3,11 @@
 	
 }
 
-.company-name {
-	font-size: 24px;
+.panel-heading h3 {
+	font-size: 18px;
+	margin: 0px;
+}
+
+.action-buttons {
+	margin-bottom: 10px;
 }
